@@ -15,6 +15,8 @@ const session = require('express-session');
 //use express flash 
 const flash= require('express-flash');
 
+const cool = require('cool-ascii-faces');
+
 const app = express();
  
 //Create connection
@@ -49,6 +51,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use('/assets',express.static(__dirname + '/public'));
 //for uploading images
 app.use(fileUpload());
+
+app.get('/cool', (req, res) => res.send(cool()));
  
 //route for homepage
 app.get('/',(req, res) => {
