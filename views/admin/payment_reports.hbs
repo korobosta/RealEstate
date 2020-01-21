@@ -1,0 +1,55 @@
+{{>admin_header}}
+<script>
+function printContent(el){
+  var restorepage = document.body.innerHTML;
+  var printcontent = document.getElementById(el).innerHTML;
+  document.body.innerHTML = printcontent;
+  window.print();
+  document.body.innerHTML = restorepage;
+}
+</script>
+<button ><a href="/user_reports">User Reports</a></button><button><a href="/property_reports">Property Reports</a></button><button><a href="/payment_reports">Payment Reports</a></button>
+<h3>Filter Payments</h3>
+  <form method="post" action="/search_payment"> 
+    <label>Payment Method</label>
+    <select name="mode">
+      <option value="cash">Cash</option>
+      <option value="mpesa">M PESA</option>
+      <option value="bank">Bank</option>
+    </select>
+
+    <label>Date Between</label><input type="date" name="bt1" min="0" required> and <input type="date" name="bt2" required>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+  <div class="button">
+    <button onclick="printContent('div3')">Print</button>
+  </div>
+  <div id="div3">
+<table class="table table-striped">
+<h2>Payments</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Property Name</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Payment Date</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each payments}}
+    <tr> 
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{property_name}}</td>
+      <td>{{payment_method}}</td>
+      <td>{{payment_date}}</td>
+      <td>{{amount}}</td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>
+</div>

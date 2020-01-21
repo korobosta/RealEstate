@@ -1,0 +1,74 @@
+{{> header}}
+         
+<div id="im"   class="slide-images" >
+  <img id="img1" src="../assets/images/1a.jpg" />
+</div >
+ <div class="container">
+  <h3>Search for Property</h3>
+  <form method="post" action="/search_property"> 
+    <label>Category</label>
+    <select name="category">
+      <option value="land">Land</option>
+      <option value="house">House/Home</option>
+      <option value="office">Office</option>
+    </select>
+
+    <label>Type</label>
+    <select name="type">
+      <option>Rent</option>
+      <option>Sale</option>
+      <option>Lease</option>
+    </select>
+
+    <label>Location</label>
+    <select name="location"  id="cities"  >
+                                            <option value="Nairobi">Nairobi</option>
+                                            <option value="Kisumu">Kisumu</option>
+                                            <option value="Mombasa">Mombasa</option>
+                                            <option value="Nakuru">Nakuru</option>
+                                            <option value="Naivasha">Naivasha</option>
+                                            <option value="Kakamega">Kakamega</option>
+                                            <option value="Busia">Busia</option>
+                                            <option value="Kajiado">Kajiado</option>
+                                            <option value="Kiambu">Kiambu</option>
+                                            <option value="Other">Other</option>
+                    </select>
+
+    <label>Price Between</label><input type="number" name="bt1" min="0" value="0"> and <input type="number" name="bt2" value="10000" min="0" >
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+    <div class="row1">
+    
+    <h2>Latest Properties</h2>
+    
+          {{#each results}}
+    <div class="column">
+     <div class="card">
+      <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <p style="color: blue;">{{ remaining_units }} units remaining </p>
+      {{#if type.rent}}
+      <p>KES. {{ amount }} per month</p>
+      {{else}}
+      <p>KES. {{ amount }}</p>
+      {{/if}}
+      {{#if bedrooms}}
+      <p>{{bedrooms}} bedrooms</p>
+      {{else}}
+      <p></p><p></p>
+      {{/if}}
+      <a class="btn btn-success" href="/login">Book</a>
+     </div>
+    </div>
+        
+        {{/each}}
+
+        <a class="btn btn-success" href="/properties">See more properties</a>
+        
+
+      
+  </div>
+  {{>footer}}
+ 

@@ -1,0 +1,34 @@
+{{>header}}
+<div class="container">
+<h3>All Properties</h3>
+<div class="row1">
+    
+     {{#each results}}
+  
+    <div class="column">
+     <div class="card">
+      <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <p style="color: blue;">{{ remaining_units }} units remaining </p>
+      {{#if type.rent}}
+      <p>KES. {{ amount }} per month</p>
+      {{else}}
+      <p>KES. {{ amount }}</p>
+      {{/if}}
+      {{#if bedrooms}}
+      <p>{{bedrooms}} bedrooms</p>
+      {{else}}
+      <p></p><p></p>
+      {{/if}}
+      <a class="btn btn-success" href="/login">Book Property</a>
+     </div>
+    </div>
+        
+        {{/each}}
+        
+
+      
+  </div>
+{{>footer}}

@@ -1,0 +1,139 @@
+{{> client_header}}
+<style type="text/css">
+  h2{
+    color: blue;
+  }
+  thead{
+    color: green;
+  }
+  a {
+  text-decoration: none;
+}
+</style>
+    
+         {{#each property}}
+    <div class="">
+     <div class="">
+        <img style="height: 450px;" class="house" src="/assets/images/property/{{image}}">
+      <h5>{{ project_name }}</h5>
+      <h5>Location</h5>
+      <p>Located in {{ location }}</p>
+      <h5>Category</h5>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <h5>Price/Rent</h5>
+      <p>KES. {{ amount }}</p>
+      <h5>Remaining Units</h5>
+      <p> {{ remaining_units }} units</p>
+      <h5>Description</h5>
+      <p> {{ description }}</p>
+      
+     </div>
+     
+    </div>
+
+        
+        {{/each}}
+<table class="table table-striped">
+<h2>Bookings</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Booking Date</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each bookings}}
+     
+    <tr>
+        
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{booking_date}}</td>
+      <td> <a class="btn btn-success" href="/assign_room?id={{booking_id}}&u={{user_id}}&p={{property_id}}&a={{amount}}">Assign Room</a></td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>
+
+<table class="table table-striped">
+<h2>Tenants</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Date Assigned</th>
+      <th scope="col">Balance</th>
+      <th scope="col">Add Rent Payment</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each tenants}}
+     
+    <tr>
+        
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{email}}</td>
+      <td>{{phone}}</td>
+      <td>{{assigned_date}}</td>
+      <td>{{balance}}</td>
+      <td>
+      <form method="post" action="/add_payment">
+      <input type="number" name="amount" placeholder="Enter amount">
+      <select name="payment_method" class="form-control" id="method"  >
+      <option value="other">Select Payment Method</option>
+                                            <option value="cash">Cash</option>
+                                            <option value="mpesa">MPESA</option>
+                                            <option value="bank">Bank</option>
+                                            
+                    </select>
+      <input type="hidden" name="balance" value="{{balance}}">
+      <input type="hidden" name="id" value="{{id}}">
+      <input type="hidden" name="user_id" value="{{user_id}}">
+      <input type="hidden" name="property_id" value="{{property_id}}">
+      <input type="submit" name="submit" value="ADD Payment">
+      </form>
+      </td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>
+
+<table class="table table-striped">
+<h2>Payments</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Payment Date</th>
+      <th scope="col">Amount Paid</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each payments}}
+     
+    <tr>
+        
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{payment_method}}</td>
+      <td>{{payment_date}}</td>
+      <td>{{amount}}</td>
+      
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>

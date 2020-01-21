@@ -1,0 +1,419 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Property Management System</title>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body onload="startTime();">
+  <header id="header">
+            <nav>
+                <ul class="menu">
+                    <li class="logo"><a href="/home">Property Management System</a></li>
+                    <p style="color: white; padding: 20px">Welcome {{full_name}}</p>
+                    <li><a class="btn btn-success"  href="/home">Home</a></li> 
+                    <li><a class="btn btn-success"  href="/add_property">Add Property</a></li>
+                    <li><a class="btn btn-success"  href="/my_property">My Properties</a></li>
+                    <li><a class="btn btn-success"  href="/edit_details">Edit My Details</a></li>
+                    <li><a class="btn btn-success"  href="/change_password">Change Password</a></li>
+                    <li><button class="btn btn-success" data-toggle="modal" ><a href="/logout" >Logout </a></li>
+                      
+                </ul>
+            </nav>
+        </header>
+
+  
+  <div class="container">
+    <div  style="display:none;" id="my" class="row1">
+    
+    <h2>My  Properties</h2>
+    
+         {{#each user_properties}}
+         
+    <div class="column">
+    <div class="card"> 
+        <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }}</p>
+      <p>KES. {{ amount }}</p>
+      <button class="btn btn-success" data-toggle="modal" data-target="#myModalLogin">Buy</button>
+    </div>
+  </div>
+        
+        {{/each}}
+        
+
+      
+  </div>
+
+    <div class="row1" id="all">
+    
+    <h2>Latest Properties</h2>
+    
+         {{#each results}}
+    <div class="column">
+    <div class="card">
+        <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }}</p>
+      <p>KES. {{ amount }}</p>
+      <button class="btn btn-success" data-toggle="modal" data-target="#myModalLogin">Buy</button>
+    </div>
+  </div>
+        
+        {{/each}}
+        
+
+      
+  </div>
+</div>
+        
+        
+ 
+    <!-- Modal Add Product--> 
+      <form action="/save" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="product_name" class="form-control" placeholder="Product Name" required>
+               </div>
+ 
+               <div class="form-group">
+                   <input type="text" name="product_price" class="form-control" placeholder="Price" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Save</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+     <!-- Modal Contact-->
+      <form action="/saveContact" method="post">
+        <div class="modal fade" id="myModalContact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="full_name" class="form-control" placeholder="Full Name" required>
+               </div>
+ 
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="number" name="phone" class="form-control" placeholder="Phone Number" required>
+               </div>
+
+               <div class="form-group">
+                   <textarea name="message" class="form-control" required="" placeholder="message"></textarea>
+               </div>
+
+               <div class="form-group">
+                   <input type="hidden" name="status" class="form-control" value="send" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Send</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+     <!-- Modal Register-->
+      <form action="/register" method="post">
+        <div class="modal fade" id="myModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="full_name" class="form-control" placeholder="Full Name" required>
+               </div>
+ 
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="number" name="phone" class="form-control" placeholder="Phone Number" required>
+               </div>
+
+               <div class="form-group">
+                   <select name="location" class="form-control" id="cities"  >
+                                            <option value="Nairobi">Nairobi</option>
+                                            <option value="Kisumu">Kisumu</option>
+                                            <option value="Mombasa">Mombasa</option>
+                                            <option value="Nakuru">Nakuru</option>
+                                            <option value="Naivasha">Naivasha</option>
+                                            <option value="Kakamega">Kakamega</option>
+                                            <option value="Busia">Busia</option>
+                                            <option value="Kajiado">Kajiado</option>
+                                            <option value="Kiambu">Kiambu</option>
+                                            <option value="Other">Other</option>
+                    </select>
+                                    
+               </div>
+
+               <div class="form-group">
+                   <input type="text" name="username" class="form-control" placeholder="Username" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="password" name="password" class="form-control" placeholder="password" required>
+               </div>
+
+               <input type="hidden" name="" value="client">
+
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Register</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+     <!-- Modal Add Property -->
+      <form action="/addProperty" method="post" enctype="multipart/form-data">
+        <div class="modal fade" id="myModalAddProperty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add Property</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="property_name" class="form-control" placeholder="Property Name" required>
+               </div>
+ 
+               <div class="form-group">
+                   <textarea name="description" class="form-control" required placeholder="Description"></textarea>
+               </div>
+               <label>Number of units</label>
+               <div class="form-group">
+                   <input type="number" name="units" class="form-control" placeholder="Number of units" min="1" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="number" name="price" class="form-control" placeholder="Price/Rent" required>
+               </div>
+               <label>Location</label>
+               <div class="form-group">
+                   <select name="location" class="form-control" id="cities"  >
+                                            <option value="Nairobi">Nairobi</option>
+                                            <option value="Kisumu">Kisumu</option>
+                                            <option value="Mombasa">Mombasa</option>
+                                            <option value="Nakuru">Nakuru</option>
+                                            <option value="Naivasha">Naivasha</option>
+                                            <option value="Kakamega">Kakamega</option>
+                                            <option value="Busia">Busia</option>
+                                            <option value="Kajiado">Kajiado</option>
+                                            <option value="Kiambu">Kiambu</option>
+                                            <option value="Other">Other</option>
+                    </select>
+                                    
+               </div>
+               <label>Category</label>
+               <div class="form-group">
+                   <select name="category" class="form-control" id="category"  >
+                                            <option value="land">Land</option>
+                                            <option value="house">House/Home</option>
+                                            <option value="office">Office</option>
+                                            
+                   </select>
+                                    
+               </div>
+               <label>Type(Rent/Sale/Lease)</label>
+               <div class="form-group">
+                   <select name="type" class="form-control" id="type"  >
+                                            <option value="rent">Rent</option>
+                                            <option value="sale">Sale</option>
+                                            <option value="lease">Lease</option>
+                                            
+                                            
+                   </select>
+                                    
+               </div>
+               <label>Property Image</label>
+               <div class="form-group">
+                   <input type="file" name="property_image" class="form-control"  required>
+               </div>
+               <div style="display: none;" id="bed" class="form-group">
+                   <input type="number" name="bedrooms" class="form-control" placeholder="Number of bedrooms" >
+               </div>
+
+               <input type="hidden" name="status" value="posted" >
+               <input type="hidden" name="user_id" value="{{user_id}}" >
+
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Register</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+
+      <!-- Modal Login-->
+      <form action="/login" method="post">
+        <div class="modal fade" id="myModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Enter Username and password</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <div class="form-group">
+                   <input type="text" name="username" class="form-control" placeholder="Username" required>
+               </div>
+ 
+               <div class="form-group">
+                   <input type="password" name="password" class="form-control" placeholder="password" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Login</button>
+             </div>
+           </div>
+         </div>
+        </div>
+     </form>
+ 
+     <!-- Modal Update User Details-->
+   <form action="/updateUser" method="post">
+       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Your Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label>Full Name</label>
+              <div class="form-group">
+                  <input type="text" name="full_name" class="form-control full_name"  required>
+              </div>
+              <label>Email</label>
+              <div class="form-group">
+                  <input type="text" name="email" class="form-control email"  required>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <input type="hidden" name="user_id" class="user_id">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </div>
+       </div>
+  </form>
+ 
+     <!-- Modal Delete Product-->
+      <form id="add-row-form" action="/delete" method="post">
+         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+               <div class="modal-content">
+                   <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel">Delete Product</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                   </div>
+                   <div class="modal-body">
+                                                 <strong>Are you sure to delete this data?</strong>
+                   </div>
+                   <div class="modal-footer">
+                                            <input type="hidden" name="product_id" class="form-control product_id2" required>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Delete</button>
+                   </div>
+                    </div>
+            </div>
+         </div>
+     </form>
+ 
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.js"></script>
+<script>
+
+  function swap(){
+      d1=document.getElementById('my');
+      d2=document.getElementById('all');
+      d1.style.display="block";
+      d2.style.display="none";
+    }
+
+
+    $(document).ready(function(){
+            //showing data to edit modal      
+        $('#header').on('click','.editDetails',function(){
+        var user_id = $(this).data('user_id');
+        var full_name = $(this).data('full_name');
+        var email = $(this).data('email');
+        $('#EditModal').modal('show');
+        $('.full_name').val(full_name);
+        $('.email').val(email);
+        $('.user_id').val(user_id);
+        });
+
+        $('#category').on('change', function(){
+          if(this.value=='house'){
+            $('#bed').show();
+          }
+          else{
+            $('#bed').hide();
+          }
+        });
+      
+            //showing delete record modal
+        $('#mytable').on('click','.delete',function(){
+        var product_id = $(this).data('id');
+        $('#DeleteModal').modal('show');
+        $('.product_id2').val(product_id);
+      });
+ 
+    });
+</script>
+
+
+</body>
+</html>

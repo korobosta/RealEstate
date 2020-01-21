@@ -1,0 +1,64 @@
+{{> client_header}}
+<div class="row1" id="all">
+    <h2>Properties am receiving rent from</h2>
+    {{#if results}}
+         {{#each results}}
+    <div class="column">
+     <div class="card">
+        <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <p style="color: blue;">{{ remaining_units }} units remaining </p>
+      {{#if type.rent}}
+      <p>KES. {{ amount }} per month</p>
+      {{else}}
+      <p>KES. {{ amount }}</p>
+      {{/if}}
+      {{#if bedrooms}}
+      <p>{{bedrooms}} bedrooms</p>
+      {{else}}
+      <p></p><p></p>
+      {{/if}}
+      <a style="background-color:blue" class="btn btn-success" href="/rent_details?id={{property_id}}">Rent reports</a>
+      <a class="btn btn-success" href="/client_edit_property?id={{property_id}}">Edit Property</a>
+     </div>
+    </div>
+        
+        {{/each}}
+        {{else}}
+        <p style="color:red; font-weight:bold;">No Data</p>
+        {{/if}}
+</div>
+
+<div class="row1" id="all">
+    <h2>Properties am paying rent to</h2>
+    {{#if result}}
+         {{#each result}}
+    <div class="column">
+     <div class="card">
+        <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <p style="color: blue;">{{ remaining_units }} units remaining </p>
+      {{#if type.rent}}
+      <p>KES. {{ amount }} per month</p>
+      {{else}}
+      <p>KES. {{ amount }}</p>
+      {{/if}}
+      {{#if bedrooms}}
+      <p>{{bedrooms}} bedrooms</p>
+      {{else}}
+      <p></p><p></p>
+      {{/if}}
+      <a style="background-color:blue" class="btn btn-success" href="/rent_payment?id={{property_id}}">More Details</a>
+           </div>
+    </div>
+        
+        {{/each}}
+        {{else}}
+        <p style="color:red; font-weight:bold;">No Data</p>
+        {{/if}}
+</div>
+

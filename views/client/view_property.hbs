@@ -1,0 +1,24 @@
+{{> client_header}}
+    
+         {{#each results}}
+    <div class="">
+     <div class="">
+        <img style="height: 450px;" class="house" src="/assets/images/property/{{image}}">
+      <h5>{{ project_name }}</h5>
+      <h5>Location</h5>
+      <p>Located in {{ location }}</p>
+      <h5>Category</h5>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <h5>Price/Rent</h5>
+      <p>KES. {{ amount }}</p>
+      <h5>Remaining Units</h5>
+      <p> {{ remaining_units }} units</p>
+      <h5>Description</h5>
+      <p> {{ description }}</p>
+      
+     </div>
+     <a class="btn btn-success" href="/book?id={{property_id}}&r={{remaining_units}}"> Book Property</a><br>
+    </div>
+
+        
+        {{/each}}

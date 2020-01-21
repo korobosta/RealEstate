@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Property Management System</title>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+  <script language="javascript" type="text/javascript">
+    var timerid = 0;
+    var images = new Array( "../assets/images/1a.jpg",
+          "../assets/images/1b.jpg",
+          "../assets/images/1c.jpg",
+          "../assets/images/1d.jpg");
+    var countimages = 0;
+    function startTime()
+    {
+      if(timerid)
+      {
+        timerid = 0;
+      }
+      var tDate = new Date();
+      
+      if(countimages == images.length)
+      {
+        countimages = 0;
+      }
+      if(tDate.getSeconds() % 5 == 0)
+      {
+        document.getElementById("img1").src = images[countimages];
+      }
+      countimages++;
+      
+      timerid = setTimeout("startTime()", 1000);
+    }
+
+    function swap(aboutContent){
+      d2=document.getElementById('aboutContent');
+        d2.style.display="block";
+     
+    }
+    function swap1(){
+      d1=document.getElementById('im');
+      d2=document.getElementById('aboutContent');
+      d1.style.display="none";
+      d2.style.display="none";
+    }
+    </script>
+</head>
+<body onload="startTime();">
+  <header>
+            <nav>
+                <ul class="menu">
+                    <li class="logo"><a href="/">Property Management System</a></li>
+                    <li><button class="btn btn-success"><a href="/"> Home</a></li> 
+                    <li><a class="btn btn-success"  href="/properties">Properties</a></li> 
+                    <li><a class="btn btn-success"  href="/about">About Us</a></li>
+                    <li><a class="btn btn-success"  href="/contact">Contact Us</a></li>
+                    <li><a class="btn btn-success"  href="/login">Login</a></li>
+                    <li><a class="btn btn-success"  href="/register">Register</a></li>
+                    
+                </ul>
+            </nav>
+  </header>
+
+

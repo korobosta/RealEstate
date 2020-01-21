@@ -1,0 +1,41 @@
+{{>header}}
+<div class="container">
+<form action="/saveContact" method="post">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Contact Us</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <p style="color:green; font-weight: bold; ">{{feedback}}</p>
+               <div class="form-group">
+                   <input type="text" name="full_name" class="form-control" placeholder="Full Name" required>
+               </div>
+ 
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="number" name="phone" class="form-control" placeholder="Phone Number" required>
+               </div>
+
+               <div class="form-group">
+                   <textarea name="message" class="form-control" required="" placeholder="message"></textarea>
+               </div>
+
+               <div class="form-group">
+                   <input type="hidden" name="status" class="form-control" value="send" required>
+               </div>
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" class="btn btn-primary">Send</button>
+             </div>
+           </div>
+         </div>
+     </form>
+{{>footer}}

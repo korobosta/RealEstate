@@ -1,0 +1,87 @@
+{{> client_header}}
+<style type="text/css">
+  h2{
+    color: blue;
+  }
+  thead{
+    color: green;
+  }
+  a {
+  text-decoration: none;
+}
+</style>
+    
+         {{#each property}}
+    <div class="">
+     <div class="">
+        <img style="height: 450px;" class="house" src="/assets/images/property/{{image}}">
+      <h5>{{ project_name }}</h5>
+      <h5>Location</h5>
+      <p>Located in {{ location }}</p>
+      <h5>Category</h5>
+      <p style="color: green;">{{ category }} for  {{type}}</p>
+      <h5>Price/Rent</h5>
+      <p>KES. {{ amount }}</p>
+      <h5>Remaining Units</h5>
+      <p> {{ remaining_units }} units</p>
+      <h5>Description</h5>
+      <p> {{ description }}</p>
+      
+     </div>
+     
+    </div>
+
+        
+        {{/each}}
+<table class="table table-striped">
+<h2>Bookings</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Booking Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each bookings}}
+     
+    <tr>
+        
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{booking_date}}</td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>
+
+<table class="table table-striped">
+<h2>Payments</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Payment Method</th>
+      <th scope="col">Payment Date</th>
+      <th scope="col">Amount Paid</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each payments}}
+     
+    <tr>
+        
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{payment_method}}</td>
+      <td>{{payment_date}}</td>
+      <td>{{amount}}</td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>

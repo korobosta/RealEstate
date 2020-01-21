@@ -1,0 +1,42 @@
+<style type="text/css">
+  h2{
+    color: blue;
+  }
+  thead{
+    color: green;
+  }
+  a {
+  text-decoration: none;
+}
+</style>
+{{> admin_header}}
+<table class="table table-striped">
+<a class="btn btn-success" href="/staff_book">book</a>
+<h2>Uncofirmed Bookings</h2>
+  <thead>
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Client Name</th>
+      <th scope="col">Property Name</th>
+      <th scope="col">Booking Date</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each bookings}}
+     
+    <tr>
+        
+      <th scope="row">{{@index}} </th>
+      <td>{{full_name}}</td>
+      <td>{{property_name}}</td>
+      <td>{{booking_date}}</td>
+      <td>{{amount}}</td>
+      <td><a class="btn btn-success" href="/payment_form?id={{booking_id}}&pi={{property_id}}">Add Payment</a></td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>

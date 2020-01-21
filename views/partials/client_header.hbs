@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Property Management System</title>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+  <link href="/assets/css/style.css" rel="stylesheet" type="text/css"/>
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/bootstrap.js"></script>
+
+</head>
+<script>
+  
+$(document).ready(function(){
+
+        $('#category').on('change', function(){
+          if(this.value=='house'){
+            $('#bed').show();
+          }
+          else{
+            $('#bed').hide();
+          }
+        });
+ 
+    });
+</script>
+
+<body>
+  <header id="header">
+            <nav>
+                <ul class="menu">
+                    <li class="logo"><a href="/home">Property Management System</a></li>
+                    <p style="color: white; padding: 20px">Welcome client {{username}}</p>
+                    <li><a class="btn btn-success"  href="/home">Home</a></li> 
+                    <li><a class="btn btn-success"  href="/add_property">Add Property</a></li>
+                    <li><a class="btn btn-success"  href="/my_property">My Properties</a></li>
+                    <li><a class="btn btn-success"  href="/client_bookings">Bookings/Payments</a></li>
+                    <li><a class="btn btn-success"  href="/rent">Rent</a></li>
+                    <li><a class="btn btn-success"  href="/edit_details">Edit My Details</a></li>
+                    <li><a class="btn btn-success"  href="/change_password">Change Password</a></li>
+                    <li><button class="btn btn-success" data-toggle="modal" ><a href="/logout" >Logout </a></li>
+                      
+                </ul>
+            </nav>
+        </header>
+
+  
+  <div class="container">

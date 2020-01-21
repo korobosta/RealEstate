@@ -1,0 +1,42 @@
+{{> staff_header}}
+
+<form action="/staff_add_payment" method="post">
+        
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Payment Form</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+               <label>Amount</label>
+               <div class="form-group">
+                   <input type="number" name="amount" class="form-control" value="{{amount}}" readonly required>
+               </div>
+               <label>Payment Method</label>
+               <div class="form-group">
+                   <select name="payment_method" class="form-control" id="method"  >
+                                            <option value="cash">Cash</option>
+                                            <option value="mpesa">MPESA</option>
+                                            <option value="bank">Bank</option>
+                                            <option value="other">Other</option>
+                    </select>
+                                    
+               </div>
+               {{#each results}}
+               <input type="hidden" name="user_id" value="{{user_id}}">
+               <input type="hidden" name="property_id" value="{{property_id}}">
+               <input type="hidden" name="booking_id" value="{{booking_id}}">
+               {{/each}}
+
+             </div>
+             <div class="modal-footer">
+               <button type="submit" class="btn btn-primary">Add Payment</button>
+             </div>
+           </div>
+         </div>
+       
+     </form>
+     

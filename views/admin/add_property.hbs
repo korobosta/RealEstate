@@ -1,0 +1,113 @@
+{{> admin_header}}
+<script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/bootstrap.js"></script>
+ <script>
+  
+$(document).ready(function(){
+
+        $('#category').on('change', function(){
+          if(this.value=='house'){
+            $('#bed').show();
+          }
+          else{
+            $('#bed').hide();
+          }
+        });
+ 
+    });
+</script>
+ <form action="/addProperty" method="post" enctype="multipart/form-data">
+        
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add Property</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+             <p style="color: green; font-weight: bold;"> {{success}} </p> 
+             <label>User</label>
+              <div class="form-group">
+                   <select name="user_id" class="form-control" id="user"  >
+                                          {{#each results}}
+                                            <option value="{{user_id}}">{{full_name}}</option>
+                                            {{/each}}
+                                          
+                                            
+                                            
+                   </select>
+                                    
+               </div>
+               <div class="form-group">
+                   <input type="text" name="property_name" class="form-control" placeholder="Property Name" required>
+               </div>
+ 
+               <div class="form-group">
+                   <textarea name="description" class="form-control" required placeholder="Description"></textarea>
+               </div>
+               <label>Number of units</label>
+               <div class="form-group">
+                   <input type="number" name="units" class="form-control" placeholder="Number of units" min="1" required>
+               </div>
+
+               <div class="form-group">
+                   <input type="number" name="price" class="form-control" placeholder="Price/Rent" required>
+               </div>
+               <label>Location</label>
+               <div class="form-group">
+                   <select name="location" class="form-control" id="cities"  >
+                                            <option value="Nairobi">Nairobi</option>
+                                            <option value="Kisumu">Kisumu</option>
+                                            <option value="Mombasa">Mombasa</option>
+                                            <option value="Nakuru">Nakuru</option>
+                                            <option value="Naivasha">Naivasha</option>
+                                            <option value="Kakamega">Kakamega</option>
+                                            <option value="Busia">Busia</option>
+                                            <option value="Kajiado">Kajiado</option>
+                                            <option value="Kiambu">Kiambu</option>
+                                            <option value="Other">Other</option>
+                    </select>
+                                    
+               </div>
+               <label>Category</label>
+               <div class="form-group">
+                   <select name="category" class="form-control" id="category"  >
+                                            <option value="land">Land</option>
+                                            <option value="house">House/Home</option>
+                                            <option value="office">Office</option>
+                                            
+                   </select>
+                                    
+               </div>
+               <label>Type(Rent/Sale/Lease)</label>
+               <div class="form-group">
+                   <select name="type" class="form-control" id="type"  >
+                                            <option value="rent">Rent</option>
+                                            <option value="sale">Sale</option>
+                                            <option value="lease">Lease</option>
+                                            
+                                            
+                   </select>
+                                    
+               </div>
+               <label>Property Image</label>
+               <div class="form-group">
+                   <input type="file" name="property_image" class="form-control"  required>
+               </div>
+               <div style="display: none;" id="bed" class="form-group">
+                   <input type="number" name="bedrooms" class="form-control" placeholder="Number of bedrooms" >
+               </div>
+
+               <input type="hidden" name="status" value="posted" >
+
+             </div>
+             <div class="modal-footer">
+               <button type="reset" class="btn btn-secondary" >Reset</button>
+               <button type="submit" class="btn btn-primary">Add Property</button>
+             </div>
+           </div>
+         </div>
+       
+     </form>

@@ -1,0 +1,17 @@
+{{> client_header}}
+<div class="row1" id="all">
+    <h2>Latest Properties</h2>
+         {{#each results}}
+    <div class="column">
+     <div class="card">
+        <img class="house" src="/assets/images/property/{{image}}">
+      <h3>{{ project_name }}</h3>
+      <p>Located in {{ location }}</p>
+      <p style="color: green;">{{ category }}</p>
+      <p>KES. {{ amount }}</p>
+      <button class="btn btn-success" data-toggle="modal" data-target="#myModalLogin">Buy</button>
+     </div>
+    </div>
+        
+        {{/each}}
+</div>

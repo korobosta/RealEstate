@@ -1,0 +1,33 @@
+
+{{> admin_header}}
+<div class="row1" id="all">
+    
+        
+    <div class="column">
+     <div class="card">
+      
+      <h3>All Users</h3>
+      <p style="color:blue">{{ users }}</p>
+      
+      <p> Admins:: {{admins}}</p>
+      <p> Staff::{{staff}}</p>
+      <p> Clients::{{clients}}</p>
+      <p> Companies::{{company}}</p>
+      <a class="btn btn-success" href="/admin_users">View Users</a>
+     </div>
+    </div>
+
+    <div class="column">
+     <div class="card">
+      
+      <h3>Total Properties</h3>
+      <p> {{results.length}}</p>
+      <a class="btn btn-success" href="/admin_property">View</a>
+     </div>
+    </div>
+        
+       
+  </div>
+
+
+
