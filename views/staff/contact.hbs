@@ -1,0 +1,46 @@
+<style type="text/css">
+  h2{
+    color: blue;
+  }
+  thead{
+    color: green;
+  }
+  a {
+  text-decoration: none;
+}
+</style>
+{{> staff_header}}
+<table class="table table-striped">
+<h2>All Messages</h2>
+  <thead>
+
+
+    <tr>
+      <th scope="col">S/N</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Message</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Date Send</th>
+      <th scope="col">Reply</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each contact}}
+     
+    <tr>
+      <td scope="row">{{@index}} </td>
+      <td>{{full_name}}</td>
+      <td>{{email}}</td>
+      <td>{{message}}</td>
+      <td>{{phone}}</td>
+      <td>{{date_send}}</td>
+      <td>{{reply}}</td>
+      <td><a class="btn btn-success" href="/staff_reply?id={{contact_id}}">Reply</a></td>
+    </tr>
+   {{/each}}
+    
+  </tbody>
+
+</table>

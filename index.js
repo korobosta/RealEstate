@@ -21,10 +21,12 @@ const app = express();
  
 //Create connection
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'property'
+  host: 'korobd.mysql.database.azure.com',
+  user: 'koro@korobd',
+  password: 'Kevin1975@',
+  database: 'korodb',
+  port: 3306,
+	ssl: true
 });
  
 //connect to database
@@ -224,8 +226,9 @@ app.get('/rent_payment',(req, res) => {
   if(req.session.role!='client'){
     res.redirect('/login');
   }
+  var user_id=req.session.user_id;
   var property_id=req.query.id;
-  conn.query('SELECT * FROM payment JOIN users ON payment.user_id=users.user_id WHERE payment.property_id = ? ', [property_id], function(err, payments, fields) {
+  conn.query('SELECT * FROM payment JOIN users ON payment.user_id=users.user_id WHERE payment.user_id = ? AND payment.property_id=?', [user_id,property_id], function(err, payments, fields) {
   conn.query('SELECT * FROM properties WHERE property_id = ? ', [property_id], function(err, property, fields) {
       if(err) throw err;
       res.render('client/rent_payment',{
@@ -791,6 +794,19 @@ app.get('/staff_clients',(req, res) => {
   });
 });
 
+app.get('/staff_contact',(req, res) => {
+  if(req.session.role!='staff'){
+    res.redirect('/login');
+  }
+  
+    conn.query("SELECT * FROM contact ", function(err, contact, fields) {
+    res.render('staff/contact',{
+      contact:contact
+    });
+  });
+});
+
+
 app.get('/staff_bookings',(req, res) => {
   if(req.session.role!='staff'){
     res.redirect('/login');
@@ -802,6 +818,21 @@ app.get('/staff_bookings',(req, res) => {
       bookings:bookings,payments:payments
     });
     });
+  });
+});
+
+app.post('/send_reply',(req, res) => {
+  if(req.session.role!='staff'){
+    res.redirect('/login');
+  }
+  var contact_id=req.body.contact_id;
+  var reply=req.body.reply;
+  var status="replied";
+  let sql = "UPDATE contact SET status='"+status +"',reply='"+reply+"' WHERE contact_id="+contact_id+ "";
+  let query = conn.query(sql, (err, results) => {
+    if(err) throw err;
+    res.redirect('/staff_contact');
+  
   });
 });
 
@@ -894,6 +925,20 @@ app.get('/staff_edit_client',(req, res) => {
   conn.query('SELECT * FROM users WHERE user_id = ? ', [user_id], function(err, results, fields) {
       if(err) throw err;
       res.render('staff/edit_client',{
+      results: results
+       });
+         
+    }); 
+});
+
+app.get('/staff_reply',(req, res) => {
+  if(req.session.role!='staff'){
+    res.redirect('/login');
+  }
+  var contact_id=req.query.id;
+  conn.query('SELECT * FROM contact WHERE contact_id = ? ', [contact_id], function(err, results, fields) {
+      if(err) throw err;
+      res.render('staff/staff_reply',{
       results: results
        });
          

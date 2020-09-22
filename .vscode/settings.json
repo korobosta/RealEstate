@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/5e4c4f2a-735f-4dd8-8f42-e4cf5f9513db/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/koroapp",
+    "appService.deploySubpath": ""
+}
