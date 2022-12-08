@@ -28,6 +28,7 @@ class Property(models.Model):
     property_category= models.CharField(
         max_length=10,
         choices=PROPERTY_TYPES)
+    image_path= models.ImageField(upload_to='properties/images/')
     def __str__(self):
         return "%s" % (self.property_name)
     class Meta:

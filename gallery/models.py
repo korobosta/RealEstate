@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Gallery(models.Model):
-    image_path= models.ImageField(upload_to='gallery/photo/')
+    image_path= models.ImageField(upload_to='gallery/images/')
     is_slider=models.BooleanField(default=False)
     date_created=models.DateTimeField(null=False, blank=False, auto_now_add=True)
     date_updated=models.DateTimeField(null=False, blank=False, auto_now_add=True)
