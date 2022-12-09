@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title%} Home | Real Estate{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="all-title-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Properties</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li>Properties</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="features" class="section wb">
+	<div class="container">
+		<div class="section-title row text-center">
+			<div class="col-md-8 col-md-offset-2">
+				<small>All Awesome Property Details</small>
+				<h3>Property Details</h3>
+				<p class="lead">Below are some of our properties</p>
+			</div><!-- end col -->
+		</div><!-- end title -->
+		
+		<hr class="invis"> 
+
+		<div class="row">
+			{% for p in properties %}
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div class="service-widget">
+					<div class="property-main">
+						<div class="property-wrap">
+							<figure class="post-media wow fadeIn">
+								<a href="{{p.image_path}}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+								<img src="{{p.image_path}}" alt="" class="img-responsive">
+								<div class="label-inner">
+									<span class="label-status label">Popular</span>
+								</div>
+								<div class="price">
+									<span class="item-sub-price">Ksh. {{p.price}}</span> 
+								</div>
+							</figure>
+							<div class="item-body">
+								<h3>{{p.property_name}}</h3>
+								<div class="info">
+									<p><span>Bedroom: {{p.bedrooms}}</span> <span>Bathroom: 2</span> <span>Land Size: <span class="estate-x-size">{{p.land_size}}</span> <span class="estate-x-unit">square</span></span> <span>Building Size: <span class="estate-x-size">{{p.building_size}}</span> <span class="estate-x-unit">square</span></span> </p>
+									<p>{{p.property_category}}</p> 
+								</div>
+								<div class="adderess">
+									<i class="fa fa-map-pin" aria-hidden="true"></i>
+									{{p.address}}
+								</div>
+							</div>
+						</div>
+						<div class="item-foot">
+							<div class="pull-left">
+								<span class="prop-user-agent">
+									<i class="fa fa-user" aria-hidden="true"></i>
+									{{p.property_owner}}
+								</span>
+							</div>
+							<div class="pull-right">
+								<span class="prop-date">
+									<i class="fa fa-calendar" aria-hidden="true"></i>
+									{{p.date_created}}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div><!-- end service -->
+			</div>
+			{% endfor %}
+		</div><!-- end row -->
+	</div><!-- end container -->
+</div><!-- end section -->
+{% endblock %}

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+from django.contrib.messages import constants as messages
 import os
 
 import environ
@@ -33,6 +33,10 @@ SECRET_KEY = env('SECRET_KEY'),
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1']
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
 
 
 # Application definition

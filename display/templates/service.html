@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block title%} Home | Real Estate{% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="all-title-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Service</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li>Service</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="about-box">
+		<div class="container">
+			<div class="section-title row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>OUR SERVICES</h3>
+                    <p>We provide a variety of services </p>
+                </div><!-- end col -->
+            </div><!-- end title -->
+			
+			<div class="row">
+				<div class="col-md-4 col-sm-4 col-sm-12">
+					<div class="single-services">
+						<div class="single-services-img">
+							<img src="{% static 'uploads/icon-01.png' %}" class="img-responsive" alt="">
+						</div>
+						<div class="single-services-desc">
+							<h4><a href="#">Full Furnished</a></h4>
+							<p>Most of our buildings are fully funished</p>
+						</div>
+						<a href="#" class="btn btn-light btn-radius grd1 btn-brd"> Read More </a>
+                    </div>
+				</div>
+				<div class="col-md-4 col-sm-4 col-sm-12">
+                    <div class="single-services">
+						<div class="single-services-img">
+							<img src="{% static 'uploads/icon-02.png' %}" class="img-responsive" alt="">
+						</div>
+						<div class="single-services-desc">
+							<h4><a href="#">Ambience</a></h4>
+							<p>Good a beautiful environment</p>
+						</div>
+						<a href="#" class="btn btn-light btn-radius grd1 btn-brd"> Read More </a>
+                    </div>
+                </div>
+				<div class="col-md-4 col-sm-4 col-sm-12">
+					<div class="single-services">
+						<div class="single-services-img">
+							<img src="{% static 'uploads/icon-03.png' %}" class="img-responsive" alt="">
+						</div>
+						<div class="single-services-desc">
+							<h4><a href="#">Luxurious Fittings</a></h4>
+							<p>To provide you the confortability you need</p>
+						</div>
+						<a href="#" class="btn btn-light btn-radius grd1 btn-brd"> Read More </a>
+                    </div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+    <div id="testimonials" class="section lb">
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>Happy Customers</h3>
+                    <p class="lead">Feedback from our customers</p>
+                </div><!-- end col -->
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="testi-carousel owl-carousel owl-theme">
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Good Property <i class="fa fa-quote-right"></i></h3>
+                                <p class="lead">The property i bought was in good condition</p>
+                                
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'uploads/testi_01.png' %}" alt="" class="img-responsive alignleft">
+                                <h4>Customer One <small>- Teacher</small></h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Awesome Services! <i class="fa fa-quote-right"></i></h3>
+                                <p class="lead">I love the agencies services.</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'uploads/testi_02.png' %}" alt="" class="img-responsive alignleft">
+                                <h4>Customer Two <small>- Lawyer</small></h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> Good Support <i class="fa fa-quote-right"></i></h3>
+                                <p class="lead">I was fully supported </p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'uploads/testi_03.png' %}" alt="" class="img-responsive alignleft">
+                                <h4>Customer Three <small>- Ceo</small></h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+                        <div class="testimonial clearfix">
+                            <div class="desc">
+                                <h3><i class="fa fa-quote-left"></i> The buildings are amazing <i class="fa fa-quote-right"></i></h3>
+                                <p class="lead">The building i bought was amazing</p>
+                            </div>
+                            <div class="testi-meta">
+                                <img src="{% static 'uploads/testi_01.png' %}" alt="" class="img-responsive alignleft">
+                                <h4>Customer Four <small>- Manager</small></h4>
+                            </div>
+                            <!-- end testi-meta -->
+                        </div>
+                        <!-- end testimonial -->
+                    </div><!-- end carousel -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+    
+{% endblock %}

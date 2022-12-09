@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title%} Home | Real Estate{% endblock %}
+{% block content %}
+{% load static %}
+<div class="all-title-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Gallery</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li>Gallery</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="gallery" class="section wb">        
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>Property Gallery</h3>
+                    <p class="lead">Our Gallery.</p>
+                </div><!-- end col -->
+            </div><!-- end title -->
+            <div id="da-thumbs" class="da-thumbs portfolio">
+            	{% for image in gallery %}
+                <div class="post-media_g pitem item-w1 item-h1 cat1">
+                    <a href="{{image.image_path}}" data-rel="prettyPhoto[gal]">
+                        <img src="{{image.image_path}}" alt="" class="img-responsive">
+                        <div>
+                            <i class="flaticon-unlink"></i>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div><!-- end portfolio -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+{% endblock %}

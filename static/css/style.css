@@ -36,12 +36,12 @@
     IMPORT FILES
 -------------------------------------------------------------------*/
 
-@import url(css/animate.css);
-@import url(css/slideshow.css);
-@import url(css/flaticon.css);
-@import url(css/prettyPhoto.css);
-@import url(css/owl.carousel.css);
-@import url(css/font-awesome.min.css);
+@import url(/static/css/animate.css);
+@import url(/static/css/slideshow.css);
+@import url(/static/css/flaticon.css);
+@import url(/static/css/prettyPhoto.css);
+@import url(/static/css/owl.carousel.css);
+@import url(/static/css/font-awesome.min.css);
 
 /*------------------------------------------------------------------
     SKELETON

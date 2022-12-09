@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title%} Home | Real Estate{% endblock %}
+{% block content %}
+{% load static %}
+<div class="all-title-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Contact</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li>Contact</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="support" class="section wb">
+        <div class="container">
+            <div class="section-title text-center">
+                <h3>Request for Contact</h3>
+                <p class="lead">Contact Details <br></p>
+            </div><!-- end title -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact_form">
+                        <div id="message"></div>
+                        <form id="contactform" class="row" action="{% url 'contact_us' %}" name="contactform" method="post">
+                            {% csrf_token %}
+                            {% if messages %}
+                                <ul class="messages">
+                                {% for message in messages %}
+                                    <p {% if message.tags %} class="alert alert-{{ message.tags }} " {% endif %}>{{ message }} </p>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                            <fieldset class="row-fluid">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <span style="color:red">{{ form.first_name.errors}}</span>
+                                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <span style="color:red">{{ form.last_name.errors}}</span>
+                                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <span style="color:red">{{ form.email.errors}}</span>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <span style="color:red">{{ form.phone_number.errors}}</span>
+                                    <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Your Phone">
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <span style="color:red">{{ form.subject.errors}}</span>
+                                    <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject">
+                                </div>
+                                
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <textarea class="form-control" name="message" id="message" rows="6" placeholder="Your Message..."></textarea>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                    <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Send Message</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div><!-- end col -->
+				<div class="col-md-6">
+					<div class="right-box-contact">
+						<h4>Phone</h4>
+						<div class="support-info">
+							<div class="info-title">
+								<i class="fa fa-phone" aria-hidden="true"></i>
+								+2547 12345 678
+								<span>Booking Time: 0800 – 1800 Hrs</span>
+							</div>
+						</div>
+					</div>
+					<div class="right-box-contact">
+						<h4>Address</h4>
+						<div class="support-info">
+							<div class="info-title">
+								<i class="fa fa-map-marker" aria-hidden="true"></i>
+								Address
+								<span>PO Box Nairobi Kenya</span>
+							</div>
+						</div>
+					</div>
+					<div class="right-box-contact">
+						<h4>Your Feedback</h4>
+						<div class="support-info">
+							<div class="info-title">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								info@realestate.com
+								<span>Help Us Improve!</span>
+							</div>
+						</div>
+					</div>
+				</div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+
+	<!-- <div id="map"></div> -->
+{% endblock %}
